@@ -23,7 +23,7 @@ const variantClasses: Record<MotionButtonVariant, string> = {
 
 const hoverAnimation = { scale: 1.02 };
 const tapAnimation = { scale: 0.98 };
-const transition = { duration: 0.15, ease: "easeOut" };
+const transition = { duration: 0.15 };
 
 const MotionButton = forwardRef<HTMLButtonElement, MotionButtonProps>(
   ({ variant = "primary", className = "", disableHover = false, disabled, children, ...rest }, ref) => {
