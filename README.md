@@ -151,7 +151,7 @@ You are welcome to explore, learn from, and adapt parts of this concept, but ple
 
 ---
 
-## Note for Developers & Recruiters
+## Under the Hood
 
 Cowvert VPN was created as a **portfolio piece** to demonstrate:
 
