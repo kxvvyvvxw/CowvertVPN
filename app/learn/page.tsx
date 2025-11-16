@@ -1,0 +1,20 @@
+import SectionOnboarding from "./components/SectionOnboarding";
+import SectionLogin from "./components/SectionLogin";
+import SectionInfo from "./components/SectionInfo";
+import SectionServers from "./components/SectionServers";
+import SectionConnected from "./components/SectionConnected";
+import SectionCTA from "./components/SectionCTA";
+
+export default function LearnPage() {
+  return (
+    // Top-level <main> wraps all Learn content so it's easy to reason about layout
+    <main className="min-h-screen bg-linear-to-b from-white to-zinc-50">
+      <SectionOnboarding />
+      <SectionLogin />
+      <SectionInfo />
+      <SectionServers />
+      <SectionConnected />
+      <SectionCTA />
+    </main>
+  );
+}
