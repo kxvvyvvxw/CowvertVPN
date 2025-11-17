@@ -42,7 +42,7 @@ export default function PricingPage() {
           <div className="absolute inset-0 bg-gradient-radial from-white via-zinc-100/60 to-transparent pointer-events-none" />
           <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Free Plan */}
-            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 shadow-[0_2px_10px_rgba(0,0,0,0.04)] ring-1 ring-zinc-100 transition-all hover:ring-zinc-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1">
+            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 shadow-[0_2px_10px_rgba(0,0,0,0.04)] ring-1 ring-zinc-100 transition-all hover:ring-zinc-200 shadow-[0_6px_18px_rgba(0,0,0,0.08)] hover:-translate-y-1">
               <motion.div
                 className="transform-gpu"
                 initial={{ opacity: 0 }}
@@ -107,7 +107,7 @@ export default function PricingPage() {
             </div>
 
             {/* Lifetime Plan */}
-            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 shadow-[0_2px_10px_rgba(0,0,0,0.04)] ring-1 ring-zinc-100 transition-all hover:ring-zinc-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1">
+            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 shadow-[0_6px_18px_rgba(0,0,0,0.08)] ring-1 ring-zinc-100 transition-all hover:ring-zinc-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1">
               <motion.div
                 className="transform-gpu"
                 initial={{ opacity: 0 }}

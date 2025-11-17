@@ -35,7 +35,7 @@ export default function Header() {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white will-change-transform">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur border-b border-zinc-100 will-change-transform">
       <Modal
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}

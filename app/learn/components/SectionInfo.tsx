@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/app/components/ui/MotionSection";
 
 // Small circular icon used in Section 3 stats, now served locally from /public/images
-const FIGMA_SECTION3_ICON = "/images/half-half.png";
+const FIGMA_SECTION3_ICON = "/images/Chalk.png";
 
 const TARGET_GOLDEN = 1.618;
 const TARGET_SERVERS = 39;
@@ -78,7 +78,7 @@ export default function SectionInfo() {
     <section
       id="learn-section-3"
       ref={sectionRef}
-      className="border-t border-zinc-100 bg-zinc-50 px-6 min-h-[40vh] flex items-center"
+      className="border-t border-zinc-100 bg-white px-6 min-h-[40vh] flex items-center"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 py-16">
         {/* Heading + paragraph block */}
@@ -109,7 +109,7 @@ export default function SectionInfo() {
         <div className="grid gap-4 md:grid-cols-2">
           {/* Metric card 1 */}
           <motion.div
-            className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-sm"
+            className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
             variants={fadeInUp}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.04 }}
           >
@@ -134,7 +134,7 @@ export default function SectionInfo() {
 
           {/* Metric card 2 */}
           <motion.div
-            className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-sm"
+            className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
             variants={fadeInUp}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
           >
@@ -161,5 +161,3 @@ export default function SectionInfo() {
     </section>
   );
 }
-
-

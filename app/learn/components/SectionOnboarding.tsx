@@ -77,15 +77,13 @@ export default function SectionOnboarding() {
               className="h-3 w-3"
             />
           </span>
-          <p>
-            We don&apos;t collect your data. We barely want to know you exist.
-          </p>
+          <p>Available for macOS · Windows · Linux · iOS · Android</p>
         </div>
 
         {/* Visual card inspired by the Figma layout */}
         <div className="relative mt-16 w-full max-w-5xl">
           {/* Outer window-style frame */}
-          <div className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+          <div className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
             {/* Top bar with macOS-like traffic lights */}
             <div className="flex items-center gap-2 px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-red-400 shadow-sm" />
@@ -107,7 +105,7 @@ export default function SectionOnboarding() {
 
             {/* Floating card that mimics the onboarding UI in the design */}
             <div className="flex items-center justify-center pb-10 pt-6 sm:pb-12 sm:pt-8">
-              <div className="relative w-full max-w-md rounded-2xl border border-zinc-200 bg-white px-8 pb-6 pt-10 shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+              <div className="relative w-full max-w-md rounded-2xl border border-zinc-200 bg-white px-8 pb-6 pt-10 shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
                 {/* Circular icon on top of the card */}
                 <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full bg-linear-to-b from-zinc-900 to-black shadow-lg">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5">
@@ -141,7 +139,11 @@ export default function SectionOnboarding() {
 
                 {/* Card actions – simple Skip / Next buttons */}
                 <div className="mt-6 flex items-center justify-between gap-4 text-sm">
-                  <MotionButton variant="text" type="button" className="px-0 text-sm">
+                  <MotionButton
+                    variant="text"
+                    type="button"
+                    className="px-0 text-sm"
+                  >
                     Skip
                   </MotionButton>
                   <MotionButton
@@ -159,5 +161,3 @@ export default function SectionOnboarding() {
     </section>
   );
 }
-
-

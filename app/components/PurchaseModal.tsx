@@ -16,7 +16,7 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose }) => {
       onClose={onClose}
       ariaLabel="Cowvert purchase information"
     >
-      <div className="space-y-3 text-left">
+      <div className="space-y-3 text-center">
         <p className="text-sm font-semibold text-zinc-900">
           Thanks for your interest!
         </p>

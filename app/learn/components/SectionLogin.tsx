@@ -4,9 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/app/components/ui/MotionSection";
 
-// New device/login visual for Section 2, pulled from the Figma design
-const FIGMA_LOGIN_DEVICE =
-  "https://www.figma.com/api/mcp/asset/ec8a7a87-adaa-41e8-89bc-3cbe281498d1";
+// Local device/login visual for Section 2
+const LOGIN_DEVICE_IMAGE = "/images/iphone-logins.png";
 
 export default function SectionLogin() {
   return (
@@ -43,11 +42,11 @@ export default function SectionLogin() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         >
           <Image
-            src={FIGMA_LOGIN_DEVICE}
+            src={LOGIN_DEVICE_IMAGE}
             alt="Phone showing Cowvert login screen"
             width={452}
             height={914}
-            className="h-auto w-full max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl object-contain transform xl:scale-110 2xl:scale-125 origin-center"
+            className="h-auto w-auto max-w-xs md:max-w-sm lg:max-w-md object-contain transform origin-center scale-[0.8]"
           />
         </motion.div>
       </div>

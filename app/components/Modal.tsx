@@ -16,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       onClose={onClose}
       ariaLabel="Cowvert download information"
     >
-      <div className="space-y-3 text-left">
+      <div className="space-y-3 text-center">
         <p className="text-sm font-semibold text-zinc-900">
           Heads up — this isn&apos;t a real download.
         </p>

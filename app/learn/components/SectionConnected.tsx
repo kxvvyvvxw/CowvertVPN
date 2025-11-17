@@ -81,7 +81,11 @@ export default function SectionConnected() {
           variants={fadeInUp}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+          <div
+            className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_6px_18px_rgba(0,0,0,0.08)]
+
+"
+          >
             {/* Top bar with simple header (mimics app chrome) */}
             <div className="flex items-center justify-between px-5 py-4 text-xs text-zinc-500">
               <div className="flex items-center gap-2">
@@ -109,9 +113,9 @@ export default function SectionConnected() {
 
               {/* Connected status card overlay */}
               <div className="flex items-center justify-center pb-16">
-                <div className="relative flex w-[260px] flex-col items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-8 py-5 shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+                <div className="relative flex w-[260px] flex-col items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-8 py-5 shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
                   <div className="flex items-center gap-2 text-sm">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
                     <span className="font-medium text-zinc-900">Connected</span>
                   </div>
                   <p className="text-3xl font-semibold tracking-[0.18em] text-zinc-900">
@@ -126,7 +130,7 @@ export default function SectionConnected() {
                   type="button"
                   variant="icon"
                   aria-label="Toggle connection"
-                  className="h-16 w-16 rounded-full bg-linear-to-b from-zinc-900 to-black text-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)]"
+                  className="h-16 w-16 rounded-full bg-linear-to-b from-zinc-900 to-black text-xl shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
                 >
                   <span>⏻</span>
                 </MotionButton>
@@ -184,8 +188,7 @@ export default function SectionConnected() {
               />
             </span>
             <p>
-              Your data stays yours. We don&apos;t store it, share it, or sell
-              it.
+              Cross-platform support macOS · Windows · Linux · iOS · Android
             </p>
           </div>
         </div>

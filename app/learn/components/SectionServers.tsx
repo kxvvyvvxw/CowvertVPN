@@ -4,9 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/app/components/ui/MotionSection";
 
-// Section 4 device visual from the "Servers where it matters" Figma section
-const FIGMA_SERVERS_DEVICE =
-  "https://www.figma.com/api/mcp/asset/b0e85bb6-fef8-41d5-8286-2bde0686a971";
+// Local Section 4 device visual for the "Servers where it matters" section
+const SERVERS_DEVICE_IMAGE = "/images/iphone-server.png";
 
 export default function SectionServers() {
   return (
@@ -23,11 +22,11 @@ export default function SectionServers() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         >
           <Image
-            src={FIGMA_SERVERS_DEVICE}
+            src={SERVERS_DEVICE_IMAGE}
             alt="Phone showing Cowvert server locations and connection strength"
             width={470}
             height={950}
-            className="h-auto w-full max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl object-contain transform xl:scale-110 2xl:scale-125 origin-center"
+            className="h-auto w-auto max-w-xs md:max-w-sm lg:max-w-md object-contain transform origin-center scale-[0.8]"
           />
         </motion.div>
 
