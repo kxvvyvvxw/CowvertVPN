@@ -115,7 +115,7 @@ function ResponsiveOnboardingContainer() {
   }, []);
 
   return (
-    <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8">
+    <div className="relative mx-auto w-full max-w-full px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Container that maintains aspect ratio */}
       <div
         ref={containerRef}

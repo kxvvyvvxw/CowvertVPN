@@ -31,9 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${varelaRound.variable} ${geistMono.variable} antialiased font-sans overflow-x-hidden`}
+        className={`${varelaRound.variable} ${geistMono.variable} antialiased font-sans`}
       >
-        <div className="min-h-screen flex flex-col overflow-x-hidden">
+        <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
