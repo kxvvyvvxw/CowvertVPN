@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import MotionButton from "@/components/ui/MotionButton";
 import MotionSection, {
@@ -12,34 +12,37 @@ export default function Home() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const tryPlay = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.then === "function") {
+      playPromise.catch(() => {});
+    }
+  }, []);
+
   useEffect(() => {
-    // Force video to play on mount and handle mobile autoplay restrictions
-    const playVideo = async () => {
-      if (videoRef.current) {
-        try {
-          videoRef.current.muted = true;
-          await videoRef.current.play();
-        } catch (err) {
-          console.log("Autoplay prevented:", err);
-        }
+    tryPlay();
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        tryPlay();
       }
     };
 
-    playVideo();
-
-    // Also try to play when page becomes visible (user returns to tab)
-    const handleVisibilityChange = () => {
-      if (!document.hidden && videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
+    const handleFirstPointer = () => {
+      tryPlay();
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pointerdown", handleFirstPointer, { once: true });
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pointerdown", handleFirstPointer);
     };
-  }, []);
+  }, [tryPlay]);
 
   return (
     <>
@@ -67,10 +70,12 @@ export default function Home() {
               loop
               muted
               playsInline
-              preload="auto"
+              controls={false}
+              controlsList="nodownload nofullscreen noremoteplayback"
               disablePictureInPicture
-              style={{ pointerEvents: "none" }}
-              aria-label="Cowvert blinking logo"
+              preload="auto"
+              aria-hidden="true"
+              onLoadedData={tryPlay}
             >
               <source src="/videos/CowvertBlinkLogo.webm" type="video/webm" />
             </video>
