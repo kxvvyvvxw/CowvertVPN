@@ -36,6 +36,10 @@ export default function Home() {
               loop
               muted
               playsInline
+              preload="auto"
+              controls={false}
+              disablePictureInPicture
+              webkit-playsinline="true"
               aria-label="Cowvert blinking logo"
             >
               <source src="/videos/CowvertBlinkLogo.webm" type="video/webm" />
