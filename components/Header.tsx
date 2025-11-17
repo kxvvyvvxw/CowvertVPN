@@ -35,12 +35,13 @@ export default function Header() {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white will-change-transform">
+    <>
       <Modal
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
       />
-      <div className="relative w-full px-6 h-[72px]">
+      <header className="sticky top-0 z-50 bg-white will-change-transform">
+        <div className="relative w-full px-6 h-[72px]">
         <div className="flex h-full items-center justify-between">
           {/* Left: Logo + Nav (flush left) */}
           <nav aria-label="Primary" className="flex items-center gap-6 text-lg">
@@ -117,18 +118,30 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </div>
+        </div>
+      </header>
 
       {/* Mobile Menu Overlay - Full Screen */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-x-0 top-[72px] bottom-0 z-40 w-full bg-white md:hidden animate-in fade-in duration-300"
+          className="fixed inset-0 z-[60] w-full h-full bg-white md:hidden animate-in fade-in duration-300"
         >
+          {/* Close button */}
+          <button
+            type="button"
+            onClick={closeMobileMenu}
+            className="absolute top-6 right-6 flex flex-col justify-center items-center w-10 h-10 gap-[6px] focus:outline-none focus:ring-2 focus:ring-zinc-300 rounded-md"
+            aria-label="Close mobile menu"
+          >
+            <span className="w-6 h-0.5 bg-zinc-900 rotate-45 translate-y-[1px]" />
+            <span className="w-6 h-0.5 bg-zinc-900 -rotate-45 -translate-y-[1px]" />
+          </button>
+
           <nav
             aria-label="Mobile navigation"
             className="flex flex-col items-center justify-center h-full px-6"
           >
-            <div className="flex flex-col items-center gap-12 w-full">
+            <div className="flex flex-col items-center gap-6 w-full">
               <Link
                 href="/pricing"
                 onClick={closeMobileMenu}
@@ -179,6 +192,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
