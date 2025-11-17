@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Varela_Round, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react";
 import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -32,9 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${varelaRound.variable} ${geistMono.variable} antialiased font-sans`}
+        className={`${varelaRound.variable} ${geistMono.variable} antialiased font-sans overflow-x-hidden`}
       >
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
