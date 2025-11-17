@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import MotionButton from "@/components/ui/MotionButton";
 import MotionSection, {
@@ -10,6 +10,36 @@ import Modal from "./components/Modal";
 
 export default function Home() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Force video to play on mount and handle mobile autoplay restrictions
+    const playVideo = async () => {
+      if (videoRef.current) {
+        try {
+          videoRef.current.muted = true;
+          await videoRef.current.play();
+        } catch (err) {
+          console.log("Autoplay prevented:", err);
+        }
+      }
+    };
+
+    playVideo();
+
+    // Also try to play when page becomes visible (user returns to tab)
+    const handleVisibilityChange = () => {
+      if (!document.hidden && videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
 
   return (
     <>
@@ -31,15 +61,15 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <video
+              ref={videoRef}
               className="w-full h-full object-contain"
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-              controls={false}
               disablePictureInPicture
-              webkit-playsinline="true"
+              style={{ pointerEvents: "none" }}
               aria-label="Cowvert blinking logo"
             >
               <source src="/videos/CowvertBlinkLogo.webm" type="video/webm" />
