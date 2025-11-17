@@ -18,14 +18,16 @@ export default function Home() {
         onClose={() => setIsDownloadModalOpen(false)}
       />
 
-      <MotionSection className="relative py-28 md:py-36 bg-white text-center px-6">
+      <MotionSection
+        className="relative py-28 md:py-36 bg-white text-center px-6"
+        animateOnLoad
+      >
         <div className="max-w-2xl mx-auto flex flex-col items-center justify-center">
           <motion.div
             className="w-48 h-48 md:w-60 md:h-60 mb-8 opacity-90 select-none"
             variants={fadeInUp}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            animate="show"
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <video
@@ -44,8 +46,7 @@ export default function Home() {
             className="flex flex-col items-center justify-center"
             variants={fadeInUp}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            animate="show"
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
           >
             <h1 className="text-5xl md:text-6xl font-semibold leading-tight tracking-tight text-zinc-900">

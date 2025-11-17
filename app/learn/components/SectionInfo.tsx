@@ -9,7 +9,7 @@ import { fadeInUp } from "@/app/components/ui/MotionSection";
 const FIGMA_SECTION3_ICON = "/images/Chalk.png";
 
 const TARGET_GOLDEN = 1.618;
-const TARGET_SERVERS = 39;
+const TARGET_SERVERS = 99;
 
 export default function SectionInfo() {
   const [goldenValue, setGoldenValue] = useState(0);

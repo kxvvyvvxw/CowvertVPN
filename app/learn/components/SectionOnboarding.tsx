@@ -1,16 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import MotionButton from "@/components/ui/MotionButton";
 import PurchaseModal from "@/app/components/PurchaseModal";
 
-const FIGMA_WORLD_MAP_IMAGE = "/images/world-map.png";
+const FIGMA_WORLD_MAP_IMAGE = "/images/worldmap.png";
 
-// These two icons are now served locally from /public/images
+// Asterisk icon for platform availability footnote
 const FIGMA_ASTERISK_ICON = "/images/learn-asterisk.png";
 
-const FIGMA_BOLT_ICON = "/images/Bolty.png";
+// Icons for stats bar
+const NODES_ICON = "/images/nodes.png";
+const GLOBAL_ICON = "/images/global.png";
+const BOLT_ICON = "/images/ybolt.png";
 
 export default function SectionOnboarding() {
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
@@ -26,7 +29,7 @@ export default function SectionOnboarding() {
         onClose={() => setIsPurchaseModalOpen(false)}
       />
       {/* Constrain content to a readable width and center it */}
-      <div className="mx-auto flex max-w-6xl flex-col items-center">
+      <div className="mx-auto flex w-full flex-col items-center">
         {/* Small overline label */}
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
           Private by design
@@ -80,84 +83,237 @@ export default function SectionOnboarding() {
           <p>Available for macOS · Windows · Linux · iOS · Android</p>
         </div>
 
-        {/* Visual card inspired by the Figma layout */}
-        <div className="relative mt-16 w-full max-w-5xl">
-          {/* Outer window-style frame */}
-          <div className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
-            {/* Top bar with macOS-like traffic lights */}
-            <div className="flex items-center gap-2 px-4 py-3">
-              <span className="h-3 w-3 rounded-full bg-red-400 shadow-sm" />
-              <span className="h-3 w-3 rounded-full bg-amber-300 shadow-sm" />
-              <span className="h-3 w-3 rounded-full bg-emerald-400 shadow-sm" />
-            </div>
+        {/* Visual window mockup from Figma design */}
+        <div className="relative mt-16 w-full">
+          <ResponsiveOnboardingContainer />
+        </div>
+      </div>
+    </section>
+  );
+}
 
-            {/* World map image pulled from the Figma asset */}
-            <div className="relative h-52 sm:h-64 md:h-72 overflow-hidden border-y border-zinc-200 bg-zinc-100">
-              <Image
-                src={FIGMA_WORLD_MAP_IMAGE}
-                alt="World map visualization for Cowvert VPN"
-                fill
-                sizes="(min-width: 1024px) 960px, 100vw"
-                priority
-                className="object-cover object-center opacity-95"
-              />
-            </div>
+/**
+ * ResponsiveOnboardingContainer – Scales the 1400x900 window proportionally
+ * Maintains aspect ratio and scales down on smaller screens like an image
+ */
+function ResponsiveOnboardingContainer() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-            {/* Floating card that mimics the onboarding UI in the design */}
-            <div className="flex items-center justify-center pb-10 pt-6 sm:pb-12 sm:pt-8">
-              <div className="relative w-full max-w-md rounded-2xl border border-zinc-200 bg-white px-8 pb-6 pt-10 shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
-                {/* Circular icon on top of the card */}
-                <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full bg-linear-to-b from-zinc-900 to-black shadow-lg">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5">
-                    <Image
-                      src={FIGMA_BOLT_ICON}
-                      alt="Fast connection icon"
-                      width={32}
-                      height={32}
-                      className="h-8 w-8"
-                    />
-                  </div>
-                </div>
+  useEffect(() => {
+    const updateScale = () => {
+      if (containerRef.current && contentRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const scale = Math.min(1, containerWidth / 1400);
+        contentRef.current.style.transform = `scale(${scale})`;
+      }
+    };
 
-                {/* Card content – heading + paragraph */}
-                <div className="text-center">
-                  <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
-                    Fast.
-                  </h2>
-                  <p className="mt-3 text-sm sm:text-base text-zinc-500">
-                    With servers all over the world, you get the highest speed
-                    every time.
-                  </p>
-                </div>
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
-                {/* Progress dots */}
-                <div className="mt-6 flex items-center justify-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-zinc-900" />
-                  <span className="h-2 w-2 rounded-full bg-zinc-300" />
-                  <span className="h-2 w-2 rounded-full bg-zinc-300" />
-                </div>
-
-                {/* Card actions – simple Skip / Next buttons */}
-                <div className="mt-6 flex items-center justify-between gap-4 text-sm">
-                  <MotionButton
-                    variant="text"
-                    type="button"
-                    className="px-0 text-sm"
-                  >
-                    Skip
-                  </MotionButton>
-                  <MotionButton
-                    type="button"
-                    className="flex-1 rounded-xl bg-linear-to-b from-zinc-900 to-black px-5 py-3 text-sm shadow-md hover:from-black hover:to-zinc-900"
-                  >
-                    Next
-                  </MotionButton>
-                </div>
-              </div>
+  return (
+    <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8">
+      {/* Container that maintains aspect ratio */}
+      <div
+        ref={containerRef}
+        className="relative mx-auto w-full max-w-[1400px]"
+      >
+        {/* 
+          Using aspect ratio trick: paddingBottom creates height based on width
+          900 / 1400 = 0.642857 = 64.2857%
+        */}
+        <div
+          className="relative w-full overflow-visible"
+          style={{ paddingBottom: "64.2857%" }}
+        >
+          {/* Absolutely positioned content that scales */}
+          <div className="absolute left-1/2 top-0 -translate-x-1/2">
+            <div
+              ref={contentRef}
+              style={{
+                width: "1400px",
+                height: "900px",
+                transformOrigin: "top center",
+                transition: "transform 0.2s ease-out",
+              }}
+            >
+              <OnboardingWindow />
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  );
+}
+
+/**
+ * OnboardingWindow – macOS-style mockup matching Figma design (1400x900)
+ * Displays map with server markers, performance metrics panel, and onboarding card
+ */
+function OnboardingWindow() {
+  return (
+    <div className="relative mx-auto w-[1400px] h-[900px] overflow-visible rounded-2xl bg-white shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
+      {/* macOS traffic lights */}
+      <div className="flex items-center gap-2 px-5 py-3">
+        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+        <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+        <span className="h-3 w-3 rounded-full bg-[#28ca42]" />
+      </div>
+
+      {/* Main content area with map – 583px height (from 100px to 683px in 900px total) */}
+      <div className="relative h-[583px]">
+        {/* World map background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={FIGMA_WORLD_MAP_IMAGE}
+            alt="World map with VPN server locations"
+            fill
+            sizes="1400px"
+            priority
+            className="object-cover opacity-80"
+          />
+
+          {/* Server markers – positioned as per Figma relative to map area (subtract 100px from Figma y coords) */}
+          <div className="absolute left-[308px] top-[104px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
+          <div className="absolute left-[700px] top-[145px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
+          <div className="absolute left-[952px] top-[122px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
+          <div className="absolute left-[1120px] top-[262px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
+          <div className="absolute left-[222px] top-[238px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
+        </div>
+
+        {/* Stats bar overlay – positioned at top of map (y: 0, height: 61px) */}
+        <div className="absolute left-0 top-0 w-full h-[61px] bg-black/70 flex items-center justify-between px-12">
+          {/* Left stats group */}
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-2">
+              <Image
+                src={NODES_ICON}
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+              />
+              <span className="text-sm text-white">5 Nodes Active</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Image
+                src={GLOBAL_ICON}
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+              />
+              <span className="text-sm text-white">Global CDN</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Image
+                src={BOLT_ICON}
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+              />
+              <span className="text-sm text-white">99.9% Uptime</span>
+            </div>
+          </div>
+
+          {/* Right stat – latency */}
+          <div className="text-sm text-[#05df72]">Avg Latency: 12ms</div>
+        </div>
+
+        {/* Metrics panel – right side card positioned relative to map (67px from top of map = 167-100) */}
+        <div className="absolute left-[1152px] top-[67px] w-[220px] h-[273.5px] rounded-[10px] bg-white/95">
+          {/* Border container */}
+          <div className="absolute left-0 top-0 w-[220px] h-[273.5px] rounded-[10px] border border-gray-200" />
+
+          {/* Performance label */}
+          <div className="absolute left-[25px] top-[26px] h-[18px]">
+            <p className="text-[12px] font-normal leading-[18px] tracking-[0.3px] uppercase text-[#6a7282]">
+              Performance
+            </p>
+          </div>
+
+          {/* Bandwidth */}
+          <div className="absolute left-[25px] top-[63px] w-[170px] h-[48.5px]">
+            <div className="absolute left-0 top-[0.5px] h-[16.5px]">
+              <p className="text-[11px] font-normal leading-[16.5px] tracking-[0.0645px] text-[#99a1af]">
+                Bandwidth
+              </p>
+            </div>
+            <div className="absolute left-0 top-[24.5px] w-[170px] h-[24px]">
+              <p className="absolute left-0 -top-px text-[16px] font-normal leading-[24px] text-black">
+                10 Gbps
+              </p>
+              <div className="absolute left-[158px] top-[6px] w-3 h-3 rounded-full bg-[#00c950]" />
+            </div>
+          </div>
+
+          {/* Load Time */}
+          <div className="absolute left-[25px] top-[131.5px] w-[170px] h-[48.5px]">
+            <div className="absolute left-0 top-[0.5px] h-[16.5px]">
+              <p className="text-[11px] font-normal leading-[16.5px] tracking-[0.0645px] text-[#99a1af]">
+                Load Time
+              </p>
+            </div>
+            <div className="absolute left-0 top-[24.5px] w-[170px] h-[24px]">
+              <p className="absolute left-0 -top-px text-[16px] font-normal leading-[24px] text-black">
+                0.8s
+              </p>
+              <div className="absolute left-[158px] top-[6px] w-3 h-3 rounded-full bg-[#00c950]" />
+            </div>
+          </div>
+
+          {/* Requests/sec */}
+          <div className="absolute left-[25px] top-[200px] w-[170px] h-[48.5px]">
+            <div className="absolute left-0 top-[0.5px] h-[16.5px]">
+              <p className="text-[11px] font-normal leading-[16.5px] tracking-[0.0645px] text-[#99a1af]">
+                Requests/sec
+              </p>
+            </div>
+            <div className="absolute left-0 top-[24.5px] w-[170px] h-[24px]">
+              <p className="absolute left-0 -top-px text-[16px] font-normal leading-[24px] text-black">
+                1,247
+              </p>
+              <div className="absolute left-[158px] top-[6px] w-3 h-3 rounded-full bg-[#f0b100]" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom content card – positioned at 249.5px left, 545px top (from window), 900x275.5 */}
+      <div className="absolute left-[249.5px] top-[545px] w-[900px] h-[275.5px] flex flex-col items-center justify-center rounded-[20px] border border-neutral-200 bg-white px-20 py-10">
+        <div className="text-center">
+          <h2 className="text-[48px] font-semibold leading-normal tracking-tight text-black mb-8">
+            Low-Latency Infrastructure.
+          </h2>
+          <p className="text-lg text-[#a1a1a1] leading-normal mb-12">
+            Edge servers deployed across 6 continents deliver sub-20ms response
+            times globally.
+          </p>
+
+          {/* Action buttons */}
+          <div className="flex items-center justify-center gap-10">
+            <MotionButton
+              variant="text"
+              type="button"
+              onClick={() => console.log("Skip clicked")}
+              className="px-8 text-base"
+            >
+              Skip
+            </MotionButton>
+            <MotionButton
+              type="button"
+              onClick={() => console.log("Next clicked")}
+              className="w-[160px] rounded-[10px] bg-black px-16 py-4 text-base text-white hover:bg-zinc-800"
+            >
+              Next
+            </MotionButton>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
