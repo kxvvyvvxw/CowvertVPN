@@ -104,7 +104,8 @@ export default function SectionConnected() {
           {/* Supporting copy */}
           <p className="text-base md:text-lg text-zinc-600">
             Cowvert encrypts your traffic, hides your IP, and keeps you
-            anonymous — automatically. No dashboards. No ads. No nonsense.
+            anonymous — automatically. No dashboards to configure. No ads. No
+            nonsense.
           </p>
 
           {/* CTA buttons row */}
