@@ -78,7 +78,7 @@ export default function SectionInfo() {
     <section
       id="learn-section-3"
       ref={sectionRef}
-      className="border-t border-zinc-100 bg-white px-6 min-h-[40vh] flex items-center"
+      className="bg-white px-6 min-h-[40vh] flex items-center"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 py-16">
         {/* Heading + paragraph block */}

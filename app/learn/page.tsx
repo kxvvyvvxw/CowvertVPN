@@ -26,7 +26,7 @@ export default function LearnPage() {
           alt=""
           width={1920}
           height={200}
-          className="w-full h-auto scale-[1.75] md:scale-100 origin-bottom"
+          className="w-full h-auto scale-[2] md:scale-100 origin-bottom"
           priority
         />
       </div>

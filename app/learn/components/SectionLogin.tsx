@@ -7,7 +7,7 @@ export default function SectionLogin() {
   return (
     <section
       id="learn-section-2"
-      className="border-t border-zinc-100 bg-white px-6 py-24 md:py-32 min-h-[90vh] flex items-center"
+      className="bg-white px-6 py-24 md:py-32 min-h-[90vh] flex items-center"
     >
       {/* Use a responsive grid: text on the left, device visual on the right */}
       <MotionSection className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">

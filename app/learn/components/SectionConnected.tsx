@@ -76,7 +76,7 @@ export default function SectionConnected() {
     <section
       id="learn-section-5"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center py-24 md:py-32 lg:py-36 px-6 border-t border-zinc-100 bg-white"
+      className="relative min-h-screen flex items-center justify-center py-24 md:py-32 lg:py-36 px-6 bg-white"
     >
       <PurchaseModal
         isOpen={isPurchaseModalOpen}
