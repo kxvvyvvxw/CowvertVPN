@@ -266,7 +266,7 @@ function ConnectedWindow({ displayTime }: { displayTime: string }) {
           </div>
 
           {/* Stats bar overlay – positioned at top of map */}
-          <div className="absolute left-0 top-0 w-full h-[61px] bg-black/70 flex items-center justify-between px-12">
+          <div className="absolute left-0 top-0 w-full h-[61px] bg-white/95 flex items-center justify-between px-12">
             {/* Left stats group */}
             <div className="flex items-center gap-12">
               <div className="flex items-center gap-3">
@@ -277,7 +277,7 @@ function ConnectedWindow({ displayTime }: { displayTime: string }) {
                   height={20}
                   className="h-5 w-5"
                 />
-                <span className="text-sm text-white">
+                <span className="text-sm text-zinc-900">
                   Connected to USA East
                 </span>
               </div>
@@ -289,7 +289,7 @@ function ConnectedWindow({ displayTime }: { displayTime: string }) {
                   height={20}
                   className="h-5 w-5"
                 />
-                <span className="text-sm text-white">Miami, FL</span>
+                <span className="text-sm text-zinc-900">Miami, FL</span>
               </div>
               <div className="flex items-center gap-3">
                 <Image
@@ -299,7 +299,9 @@ function ConnectedWindow({ displayTime }: { displayTime: string }) {
                   height={20}
                   className="h-5 w-5"
                 />
-                <span className="text-sm text-white">Protocol: WireGuard</span>
+                <span className="text-sm text-zinc-900">
+                  Protocol: WireGuard
+                </span>
               </div>
             </div>
 

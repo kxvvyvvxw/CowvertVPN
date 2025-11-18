@@ -242,7 +242,7 @@ function OnboardingWindow() {
           </div>
 
           {/* Stats bar overlay – positioned at top of map (y: 0, height: 61px) */}
-          <div className="absolute left-0 top-0 w-full h-[61px] bg-black/70 flex items-center justify-between px-12">
+          <div className="absolute left-0 top-0 w-full h-[61px] bg-white/95 flex items-center justify-between px-12">
             {/* Left stats group */}
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-2">
@@ -253,7 +253,7 @@ function OnboardingWindow() {
                   height={20}
                   className="h-5 w-5"
                 />
-                <span className="text-sm text-white">5 Nodes Active</span>
+                <span className="text-sm text-zinc-900">5 Nodes Active</span>
               </div>
               <div className="flex items-center gap-2">
                 <Image
@@ -263,7 +263,7 @@ function OnboardingWindow() {
                   height={20}
                   className="h-5 w-5"
                 />
-                <span className="text-sm text-white">Global CDN</span>
+                <span className="text-sm text-zinc-900">Global CDN</span>
               </div>
               <div className="flex items-center gap-2">
                 <Image
@@ -273,7 +273,7 @@ function OnboardingWindow() {
                   height={20}
                   className="h-5 w-5"
                 />
-                <span className="text-sm text-white">99.9% Uptime</span>
+                <span className="text-sm text-zinc-900">99.9% Uptime</span>
               </div>
             </div>
 

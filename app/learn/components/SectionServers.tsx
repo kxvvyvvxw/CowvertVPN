@@ -30,8 +30,9 @@ export default function SectionServers() {
 
           {/* Supporting paragraph */}
           <p className="max-w-xl text-base md:text-lg text-zinc-600">
-            We use trusted, high-performance regions — not a bloated list of
-            questionable servers. Fast, private, and transparent. Always.
+            We use trusted, high-performance regions — <br />
+            not a bloated list of questionable servers. <br />
+            Fast, private, and transparent.
           </p>
         </div>
       </MotionSection>
