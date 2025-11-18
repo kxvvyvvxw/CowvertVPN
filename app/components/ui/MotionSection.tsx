@@ -24,6 +24,7 @@ type MotionSectionProps = {
   className?: string;
   id?: string;
   animateOnLoad?: boolean;
+  as?: "section" | "div";
 };
 
 export default function MotionSection({
@@ -32,14 +33,17 @@ export default function MotionSection({
   className,
   id,
   animateOnLoad,
+  as = "div",
 }: MotionSectionProps) {
   const transition =
     delay != null
       ? { ...FADE_IN_UP_TRANSITION, delay }
       : FADE_IN_UP_TRANSITION;
 
+  const MotionComponent = as === "section" ? motion.section : motion.div;
+
   return (
-    <motion.section
+    <MotionComponent
       id={id}
       className={className}
       variants={fadeInUp}
@@ -50,7 +54,7 @@ export default function MotionSection({
         : { whileInView: "show", viewport: { once: true, margin: "-100px" } })}
     >
       {children}
-    </motion.section>
+    </MotionComponent>
   );
 }
 

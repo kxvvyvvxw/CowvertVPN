@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import MotionSection from "@/app/components/ui/MotionSection";
 
 export default function SectionServers() {
   return (
@@ -9,7 +10,7 @@ export default function SectionServers() {
       className="border-t border-zinc-100 bg-white px-6 py-24 md:py-32 min-h-[90vh] flex items-center"
     >
       {/* Grid layout mirrors Section 2, but with device on the left and text on the right */}
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">
+      <MotionSection className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Left column – servers device visual */}
         <div className="flex justify-center md:justify-start">
           <ResponsiveDeviceContainer />
@@ -34,7 +35,7 @@ export default function SectionServers() {
             routing with zero tracking.
           </p>
         </div>
-      </div>
+      </MotionSection>
     </section>
   );
 }
@@ -190,7 +191,7 @@ function ServersDeviceMockup() {
   return (
     <div className="relative w-[430px] h-[900px]">
       {/* Outer device frame with stronger shadow */}
-      <div className="absolute inset-0 rounded-[60px] shadow-[0_60px_120px_rgba(15,23,42,0.3)]">
+      <div className="absolute inset-0 rounded-[60px] shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
         {/* Device bezel - F5F5F5 color */}
         <div className="absolute inset-0 rounded-[60px] bg-[#f5f5f5] border border-zinc-200/50">
           {/* Inner screen area with white background */}

@@ -40,4 +40,9 @@ body.font-sans {
   .rounded-md {
     border-radius: 9999px;
   }
+
+  /* Custom square-ish radius for elements that should not be fully pill-shaped */
+  .rounded-square {
+    border-radius: 0.5rem; /* ~8px, tighter rectangle */
+  }
 }

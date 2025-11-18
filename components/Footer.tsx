@@ -8,6 +8,35 @@ export default function Footer() {
   const year = new Date().getFullYear();
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
+  // Base styles shared by all footer nav items (links + button)
+  const baseItemClasses =
+    "inline-flex items-center border border-zinc-200 bg-white text-xs font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50";
+
+  // Common sizing so shapes feel like the ToyFight menu
+  const sizeClasses = "px-4 md:px-5 py-2";
+  const capsuleRadius = "rounded-full";
+  const rectangleRadius = "rounded-square";
+
+  // Simple config for footer links
+  const footerLinks = [
+    { label: "Pricing", href: "/docs", external: false },
+    {
+      label: "Discord",
+      href: "https://discord.gg/cEtRnVS2",
+      external: true,
+    },
+    {
+      label: "Github",
+      href: "https://github.com/kxvvyvvxw/CowvertVPN",
+      external: true,
+    },
+    {
+      label: "Contact Us",
+      href: "mailto:hello@example.com",
+      external: false,
+    },
+  ];
+
   return (
     <footer className="relative z-50 ">
       <Modal
@@ -15,50 +44,46 @@ export default function Footer() {
         onClose={() => setIsDownloadModalOpen(false)}
       />
       <div className="w-full px-6 py-3">
-        <div className="flex flex-col md:flex-row flex-wrap items-center justify-center md:justify-between gap-3">
-          <div className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 shadow-sm">
+        <div className="flex flex-col md:flex-row flex-wrap items-center justify-center md:justify-between gap-1 md:gap-2">
+          <div
+            className={`${baseItemClasses} ${sizeClasses} ${rectangleRadius}`}
+          >
             © {year} Cowvert VPN
           </div>
+
           <nav
             aria-label="Footer"
-            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2"
+            className="flex flex-wrap items-center justify-center gap-x-1 md:gap-x-2 gap-y-1"
           >
+            {/* First item: capsule-style download button */}
             <MotionButton
               type="button"
               variant="secondary"
               onClick={() => setIsDownloadModalOpen(true)}
-              className="rounded-full px-3 py-1 text-xs font-semibold"
+              className={`${baseItemClasses} ${sizeClasses} ${capsuleRadius}`}
             >
               Download
             </MotionButton>
-            <a
-              href="/docs"
-              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
-            >
-              Pricing
-            </a>
-            <a
-              href="https://discord.gg/cEtRnVS2"
-              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Discord
-            </a>
-            <a
-              href="https://github.com/kxvvyvvxw/CowvertVPN"
-              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github
-            </a>
-            <a
-              href="mailto:hello@example.com"
-              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
-            >
-              Contact Us
-            </a>
+
+            {/* Remaining items: alternate square and capsule like ToyFight menu */}
+            {footerLinks.map((link, index) => {
+              const isSquare = index % 2 === 0;
+              const radius = isSquare ? rectangleRadius : capsuleRadius;
+
+              const classes = `${baseItemClasses} ${sizeClasses} ${radius}`;
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={classes}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
         </div>
       </div>

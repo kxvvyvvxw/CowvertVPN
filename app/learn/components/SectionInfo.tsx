@@ -85,6 +85,9 @@ export default function SectionInfo() {
         <motion.div
           className="max-w-4xl mx-auto text-center"
           variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           {/* Overline label */}
@@ -111,6 +114,9 @@ export default function SectionInfo() {
           <motion.div
             className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
             variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.04 }}
           >
             <div className="flex items-center justify-center gap-3">
@@ -136,6 +142,9 @@ export default function SectionInfo() {
           <motion.div
             className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
             variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
           >
             <div className="flex items-center justify-center gap-3">

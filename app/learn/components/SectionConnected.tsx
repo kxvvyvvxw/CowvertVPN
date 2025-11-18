@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import MotionButton from "@/components/ui/MotionButton";
 import PurchaseModal from "@/app/components/PurchaseModal";
+import MotionSection from "@/app/components/ui/MotionSection";
 
 // Map image from new Figma design
 const FIGMA_CONNECTED_MAP =
@@ -82,7 +83,7 @@ export default function SectionConnected() {
         onClose={() => setIsPurchaseModalOpen(false)}
       />
 
-      <div className="mx-auto flex w-full flex-col items-center">
+      <MotionSection className="mx-auto flex w-full flex-col items-center">
         {/* Visual window mockup from Figma design */}
         <div className="relative mt-16 w-full">
           <ResponsiveConnectedContainer displayTime={displayTime} />
@@ -141,7 +142,7 @@ export default function SectionConnected() {
             </p>
           </div>
         </div>
-      </div>
+      </MotionSection>
     </section>
   );
 }
@@ -210,7 +211,7 @@ function ResponsiveConnectedContainer({
  */
 function ConnectedWindow({ displayTime }: { displayTime: string }) {
   return (
-    <div className="relative mx-auto w-[1400px] h-[900px] rounded-[30px] bg-white border border-zinc-200/80 shadow-[0_40px_80px_rgba(15,23,42,0.24)]">
+    <div className="relative mx-auto w-[1400px] h-[900px] rounded-[30px] bg-white border border-zinc-200/80 shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
       {/* Inner content wrapper with overflow-hidden to clip map and internals */}
       <div className="relative w-full h-full rounded-[30px] overflow-hidden">
         {/* macOS traffic lights */}
