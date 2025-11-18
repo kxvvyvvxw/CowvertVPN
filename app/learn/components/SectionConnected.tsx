@@ -212,7 +212,7 @@ function ResponsiveConnectedContainer({
  */
 function ConnectedWindow({ displayTime }: { displayTime: string }) {
   return (
-    <div className="relative mx-auto w-[1400px] h-[900px] rounded-[30px] bg-white border border-zinc-200/80 shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
+    <div className="relative mx-auto w-[1400px] h-[900px] rounded-[30px] bg-white border-[2] border-black-200/80 shadow-[0_7.2px_21.6px_rgba(0,0,0,0.096)]">
       {/* Inner content wrapper with overflow-hidden to clip map and internals */}
       <div className="relative w-full h-full rounded-[30px] overflow-hidden">
         {/* macOS traffic lights */}

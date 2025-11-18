@@ -41,7 +41,7 @@ export default function PricingPage() {
             delay={0.1}
           >
             {/* Free Plan */}
-            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 ring-1 ring-zinc-100 shadow-[0_6px_18px_rgba(0,0,0,0.08)] transition-all hover:ring-zinc-200 hover:-translate-y-1">
+            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 ring-1 ring-zinc-100 border-[2] border-black-200/80 shadow-[0_7.2px_21.6px_rgba(0,0,0,0.096)] transition-all hover:ring-zinc-200 hover:-translate-y-1">
               <div className="flex items-baseline justify-between">
                 <h2 className="text-lg font-semibold text-zinc-900">Free</h2>
                 <div className="text-5xl font-light text-zinc-900">$0</div>
@@ -99,7 +99,7 @@ export default function PricingPage() {
             </div>
 
             {/* Lifetime Plan */}
-            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 shadow-[0_6px_18px_rgba(0,0,0,0.08)] ring-1 ring-zinc-100 transition-all hover:ring-zinc-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1">
+            <div className="relative bg-white/80 backdrop-blur-md rounded-[24px] p-10 border-[2] border-black-200/80 shadow-[0_7.2px_21.6px_rgba(0,0,0,0.096)] ring-1 ring-zinc-100 transition-all hover:ring-zinc-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1">
               <div className="flex items-baseline justify-between">
                 <h2 className="text-lg font-semibold text-zinc-900">
                   Lifetime Access

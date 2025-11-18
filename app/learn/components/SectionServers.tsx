@@ -25,7 +25,8 @@ export default function SectionServers() {
 
           {/* Main heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900">
-            Smartly placed, not overhyped.
+            Smartly placed, <br />
+            not overhyped.
           </h2>
 
           {/* Supporting paragraph */}

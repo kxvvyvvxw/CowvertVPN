@@ -100,7 +100,7 @@ function LoginDeviceMockup() {
   return (
     <div className="relative w-[430px] h-[900px]">
       {/* Outer device frame with stronger shadow */}
-      <div className="absolute inset-0 rounded-[60px] shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
+      <div className="absolute inset-0 rounded-[60px] shadow-[0_7.2px_21.6px_rgba(0,0,0,0.096)]">
         {/* Device bezel - F5F5F5 color */}
         <div className="absolute inset-0 rounded-[60px] bg-[#f5f5f5] border border-zinc-200/50">
           {/* Inner screen area with white background */}
