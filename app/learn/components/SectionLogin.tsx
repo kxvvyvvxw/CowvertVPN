@@ -25,9 +25,9 @@ export default function SectionLogin() {
 
           {/* Supporting paragraph */}
           <p className="max-w-xl text-base md:text-lg text-zinc-600">
-            Cowvert works without sign-ups — but if you prefer to sync settings
-            or unlock the lifetime plan across devices, you can use a
-            lightweight login. <br /> No tracking. No data selling. Ever.
+            Cowvert runs without sign-ups, accounts, or emails. <br />
+            Need sync or lifetime access across devices? <br />
+            Just sign in — no strings attached.
           </p>
         </div>
 

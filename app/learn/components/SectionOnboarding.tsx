@@ -150,6 +150,60 @@ function ResponsiveOnboardingContainer() {
   );
 }
 
+function BlinkingDot({
+  className = "",
+  delay = 0,
+}: {
+  className?: string;
+  delay?: number;
+}) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const intervalDuration = 750;
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+
+    const startInterval = () => {
+      intervalId = setInterval(() => {
+        setIsVisible((prev) => !prev);
+      }, intervalDuration);
+    };
+
+    const timeoutMs = delay * 1000;
+
+    if (timeoutMs > 0) {
+      const timeoutId = setTimeout(() => {
+        setIsVisible((prev) => !prev);
+        startInterval();
+      }, timeoutMs);
+
+      return () => {
+        clearTimeout(timeoutId);
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+      };
+    }
+
+    startInterval();
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [delay]);
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`absolute h-3 w-3 rounded-full bg-[#00c950] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] transition-opacity duration-300 ${className} ${
+        isVisible ? "opacity-100" : "opacity-30"
+      }`}
+    />
+  );
+}
+
 /**
  * OnboardingWindow – macOS-style mockup matching Figma design (1400x900)
  * Displays map with server markers, performance metrics panel, and onboarding card
@@ -180,11 +234,11 @@ function OnboardingWindow() {
             />
 
             {/* Server markers – positioned as per Figma relative to map area (subtract 100px from Figma y coords) */}
-            <div className="absolute left-[308px] top-[104px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
-            <div className="absolute left-[700px] top-[145px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
-            <div className="absolute left-[952px] top-[122px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
-            <div className="absolute left-[1120px] top-[262px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
-            <div className="absolute left-[222px] top-[238px] h-3 w-3 rounded-full bg-[#00c950] opacity-[0.94] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]" />
+            <BlinkingDot className="left-[308px] top-[104px]" />
+            <BlinkingDot className="left-[700px] top-[145px]" delay={0.2} />
+            <BlinkingDot className="left-[952px] top-[122px]" delay={0.35} />
+            <BlinkingDot className="left-[1120px] top-[262px]" delay={0.5} />
+            <BlinkingDot className="left-[222px] top-[238px]" delay={0.65} />
           </div>
 
           {/* Stats bar overlay – positioned at top of map (y: 0, height: 61px) */}
@@ -293,8 +347,8 @@ function OnboardingWindow() {
               Low-Latency Infrastructure.
             </h2>
             <p className="text-lg text-[#a1a1a1] leading-normal mb-12">
-              Edge servers deployed across 6 continents deliver sub-20ms
-              response times globally.
+              Five core nodes positioned around the world. <br />
+              Optimized routing designed to make the internet feel lighter.
             </p>
 
             {/* Action buttons */}

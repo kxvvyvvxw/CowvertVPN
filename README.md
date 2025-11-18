@@ -1,10 +1,10 @@
-<p align="center">
-  <img src="./public/images/Homepage-for-readme.png" alt="Cowvert VPN – UI Preview" width="100%" />
-</p>
-
 # 🐮 Cowvert VPN — UI Concept
 
 [![Status: Concept](https://img.shields.io/badge/status-concept-blueviolet.svg)](https://github.com/daw99y/cowvert-vpn) [![Type: UI%2FUX%20Prototype](https://img.shields.io/badge/type-UI%2FUX%20prototype-333333.svg)](https://github.com/daw99y/cowvert-vpn)
+
+<p align="center">
+  <img src="./public/images/Homepage-for-readme.png" alt="Cowvert VPN – UI Preview" width="100%" />
+</p>
 
 Cowvert VPN is a **conceptual VPN product interface** for a fictional, privacy‑first VPN brand.  
 It is designed to showcase **modern UI**, **product storytelling**, and **front‑end craft**, not to provide a real VPN service.  

@@ -25,14 +25,13 @@ export default function SectionServers() {
 
           {/* Main heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900">
-            Servers where it matters — not everywhere just to look impressive.
+            Smartly placed, not overhyped.
           </h2>
 
           {/* Supporting paragraph */}
           <p className="max-w-xl text-base md:text-lg text-zinc-600">
-            Cowvert connects you through trusted, performance-focused regions —
-            no filler locations, no shady middlemen. <br /> Just fast, secure
-            routing with zero tracking.
+            We use trusted, high-performance regions — not a bloated list of
+            questionable servers. Fast, private, and transparent. Always.
           </p>
         </div>
       </MotionSection>
