@@ -40,9 +40,9 @@ export default function Header() {
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
       />
-      <header className="sticky top-0 z-50 bg-white will-change-transform">
+      <header className="fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-zinc-100 will-change-transform">
         <div className="relative w-full px-6 h-[72px]">
-        <div className="flex h-full items-center justify-between">
+          <div className="flex h-full items-center justify-between">
           {/* Left: Logo + Nav (flush left) */}
           <nav aria-label="Primary" className="flex items-center gap-6 text-lg">
             <Link
@@ -117,7 +117,7 @@ export default function Header() {
               />
             </button>
           </div>
-        </div>
+          </div>
         </div>
       </header>
 
