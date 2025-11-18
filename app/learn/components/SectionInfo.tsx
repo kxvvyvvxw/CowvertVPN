@@ -102,11 +102,9 @@ export default function SectionInfo() {
 
           {/* Supporting paragraph */}
           <p className="mt-4 text-base md:text-lg text-zinc-600">
-            We built Cowvert to make privacy effortless. <br />
-            No account required, no logs collected — just fast, invisible
-            protection. <br />
-            If you want sync or lifetime access, login is available — but never
-            required.
+            Cowvert was designed to make privacy effortless. <br />
+            No account is required and no logs are ever stored. <br />
+            Login is available for sync or lifetime access, but never mandatory.
           </p>
         </motion.div>
 
