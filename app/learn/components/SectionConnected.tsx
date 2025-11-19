@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SiApple, SiLinux, SiIos, SiAndroid } from "react-icons/si";
 import { FaWindows } from "react-icons/fa";
@@ -120,14 +121,15 @@ export default function SectionConnected() {
             >
               Start Free
             </MotionButton>
-            <MotionButton
-              type="button"
-              variant="secondary"
-              onClick={() => setIsPurchaseModalOpen(true)}
-              className="min-w-[140px] rounded-full px-6 py-3 text-sm"
-            >
-              Lifetime Plan
-            </MotionButton>
+            <Link href="/pricing">
+              <MotionButton
+                type="button"
+                variant="secondary"
+                className="min-w-[140px] rounded-full px-6 py-3 text-sm"
+              >
+                Lifetime Plan
+              </MotionButton>
+            </Link>
           </div>
 
           {/* Footnote with asterisk */}

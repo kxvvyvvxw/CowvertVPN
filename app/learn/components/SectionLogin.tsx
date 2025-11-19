@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import MotionSection from "@/app/components/ui/MotionSection";
 
@@ -228,7 +229,10 @@ function LoginDeviceMockup() {
                 </div>
 
                 {/* Get lifetime plan link */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-[736px] flex items-center gap-1">
+                <Link
+                  href="/pricing"
+                  className="absolute left-1/2 -translate-x-1/2 top-[736px] flex items-center gap-1 hover:opacity-70 transition-opacity"
+                >
                   <p className="text-[12px] font-medium text-black">
                     Get lifetime plan
                   </p>
@@ -241,7 +245,7 @@ function LoginDeviceMockup() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </div>
+                </Link>
               </div>
 
               {/* Dynamic Island / Notch */}
