@@ -130,7 +130,7 @@ export default function Home() {
               </span>
               <span className="inline-flex items-center gap-2">
                 <GlobeIcon className="h-4 w-4 text-zinc-400" aria-hidden />
-                99+ global regions
+                99+ servers worldwide
               </span>
               <span className="inline-flex items-center gap-2">
                 <LockClosedIcon className="h-4 w-4 text-zinc-400" aria-hidden />
