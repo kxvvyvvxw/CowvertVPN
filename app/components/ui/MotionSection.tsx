@@ -51,7 +51,10 @@ export default function MotionSection({
       transition={transition}
       {...(animateOnLoad
         ? { animate: "show" }
-        : { whileInView: "show", viewport: { once: true, margin: "-100px" } })}
+        : {
+            whileInView: "show",
+            viewport: { once: true, amount: 0.25 },
+          })}
     >
       {children}
     </MotionComponent>
