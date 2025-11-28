@@ -21,9 +21,8 @@
   --radius-xl: 9999px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Removed scroll-behavior: smooth to prevent header flashing with backdrop-blur */
+/* Smooth scrolling is now handled via JavaScript for anchor links only */
 
 body {
   background: var(--background);
@@ -51,11 +50,5 @@ body.font-sans {
   /* Custom square-ish radius for elements that should not be fully pill-shaped */
   .rounded-square {
     border-radius: 0.5rem; /* ~8px, tighter rectangle */
-  }
-  
-  /* Fix for Safari/Chrome flashing on fixed elements */
-  .backface-hidden {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 }

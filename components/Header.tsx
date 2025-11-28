@@ -1,13 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import MotionButton from "@/components/ui/MotionButton";
 import Modal from "@/app/components/Modal";
 
 export default function Header() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Smooth scroll handler for anchor links (replaces CSS scroll-behavior: smooth)
+  const handleAnchorClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    []
+  );
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -40,7 +52,7 @@ export default function Header() {
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
       />
-      <header className="fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-zinc-100 transform-gpu backface-hidden">
+      <header className="fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-zinc-100 isolate">
         <div className="relative w-full px-6 h-[72px]">
           <div className="flex h-full items-center justify-between">
           {/* Left: Logo + Nav (flush left) */}
@@ -56,12 +68,20 @@ export default function Header() {
             </Link>
             {/* Desktop Navigation - hidden on mobile */}
             <div className="hidden md:flex items-center gap-6">
-              <Link href="#pricing" className="text-zinc-700 hover:text-black">
+              <a
+                href="#pricing"
+                onClick={(e) => handleAnchorClick(e, "pricing")}
+                className="text-zinc-700 hover:text-black cursor-pointer"
+              >
                 Pricing
-              </Link>
-              <Link href="#learn" className="text-zinc-700 hover:text-black">
+              </a>
+              <a
+                href="#learn"
+                onClick={(e) => handleAnchorClick(e, "learn")}
+                className="text-zinc-700 hover:text-black cursor-pointer"
+              >
                 Learn
-              </Link>
+              </a>
               <a
                 href="https://discord.gg/cEtRnVS2"
                 target="_blank"
@@ -142,20 +162,26 @@ export default function Header() {
             className="flex flex-col items-center justify-center h-full px-6"
           >
             <div className="flex flex-col items-center gap-6 w-full">
-              <Link
+              <a
                 href="#pricing"
-                onClick={closeMobileMenu}
-                className="text-3xl text-zinc-700 hover:text-black transition-colors"
+                onClick={(e) => {
+                  handleAnchorClick(e, "pricing");
+                  closeMobileMenu();
+                }}
+                className="text-3xl text-zinc-700 hover:text-black transition-colors cursor-pointer"
               >
                 Pricing
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#learn"
-                onClick={closeMobileMenu}
-                className="text-3xl text-zinc-700 hover:text-black transition-colors"
+                onClick={(e) => {
+                  handleAnchorClick(e, "learn");
+                  closeMobileMenu();
+                }}
+                className="text-3xl text-zinc-700 hover:text-black transition-colors cursor-pointer"
               >
                 Learn
-              </Link>
+              </a>
               <a
                 href="https://discord.gg/cEtRnVS2"
                 target="_blank"
