@@ -52,100 +52,101 @@ export default function Header() {
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
       />
-      <header className="fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-zinc-100 isolate">
+      <header className="fixed top-0 left-0 z-50 w-full bg-white/95 border-b border-zinc-100">
         <div className="relative w-full px-6 h-[72px]">
           <div className="flex h-full items-center justify-between">
-          {/* Left: Logo + Nav (flush left) */}
-          <nav aria-label="Primary" className="flex items-center gap-6 text-lg">
-            <Link
-              href="/"
-              aria-label="Cowvert VPN home"
-              className="inline-flex items-center"
+            {/* Left: Logo + Nav (flush left) */}
+            <nav
+              aria-label="Primary"
+              className="flex items-center gap-6 text-lg"
             >
-              <span className="text-2xl sm:text-3xl font-bold tracking-tight">
-                Cowvert VPN
-              </span>
-            </Link>
-            {/* Desktop Navigation - hidden on mobile */}
-            <div className="hidden md:flex items-center gap-6">
-              <a
-                href="#pricing"
-                onClick={(e) => handleAnchorClick(e, "pricing")}
-                className="text-zinc-700 hover:text-black cursor-pointer"
+              <Link
+                href="/"
+                aria-label="Cowvert VPN home"
+                className="inline-flex items-center"
               >
-                Pricing
-              </a>
-              <a
-                href="#learn"
-                onClick={(e) => handleAnchorClick(e, "learn")}
-                className="text-zinc-700 hover:text-black cursor-pointer"
+                <span className="text-2xl sm:text-3xl font-bold tracking-tight">
+                  Cowvert VPN
+                </span>
+              </Link>
+              {/* Desktop Navigation - hidden on mobile */}
+              <div className="hidden md:flex items-center gap-6">
+                <a
+                  href="#pricing"
+                  onClick={(e) => handleAnchorClick(e, "pricing")}
+                  className="text-zinc-700 hover:text-black cursor-pointer"
+                >
+                  Pricing
+                </a>
+                <a
+                  href="#learn"
+                  onClick={(e) => handleAnchorClick(e, "learn")}
+                  className="text-zinc-700 hover:text-black cursor-pointer"
+                >
+                  Learn
+                </a>
+                <a
+                  href="https://discord.gg/cEtRnVS2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-700 hover:text-black"
+                >
+                  Discord
+                </a>
+                <a
+                  href="https://github.com/kxvvyvvxw/CowvertVPN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-700 hover:text-black"
+                >
+                  Github
+                </a>
+              </div>
+            </nav>
+
+            {/* Right: Actions */}
+            <div className="flex items-center justify-end gap-2 sm:gap-4">
+              {/* Desktop Download Button */}
+              <MotionButton
+                type="button"
+                onClick={() => setIsDownloadModalOpen(true)}
+                className="hidden md:block h-10 rounded-md px-4 text-base"
               >
-                Learn
-              </a>
-              <a
-                href="https://discord.gg/cEtRnVS2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-black"
+                Download
+              </MotionButton>
+
+              {/* Mobile Hamburger Button */}
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] focus:outline-none focus:ring-2 focus:ring-zinc-300 rounded-md"
+                aria-label="Toggle mobile menu"
+                aria-expanded={isMobileMenuOpen}
               >
-                Discord
-              </a>
-              <a
-                href="https://github.com/kxvvyvvxw/CowvertVPN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-black"
-              >
-                Github
-              </a>
+                <span
+                  className={`w-6 h-0.5 bg-zinc-900 transition-all duration-300 ${
+                    isMobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""
+                  }`}
+                />
+                <span
+                  className={`w-6 h-0.5 bg-zinc-900 transition-all duration-300 ${
+                    isMobileMenuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`w-6 h-0.5 bg-zinc-900 transition-all duration-300 ${
+                    isMobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+                  }`}
+                />
+              </button>
             </div>
-          </nav>
-
-          {/* Right: Actions */}
-          <div className="flex items-center justify-end gap-2 sm:gap-4">
-            {/* Desktop Download Button */}
-            <MotionButton
-              type="button"
-              onClick={() => setIsDownloadModalOpen(true)}
-              className="hidden md:block h-10 rounded-md px-4 text-base"
-            >
-              Download
-            </MotionButton>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] focus:outline-none focus:ring-2 focus:ring-zinc-300 rounded-md"
-              aria-label="Toggle mobile menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <span
-                className={`w-6 h-0.5 bg-zinc-900 transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-zinc-900 transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-zinc-900 transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""
-                }`}
-              />
-            </button>
-          </div>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu Overlay - Full Screen */}
       {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-[60] w-full h-full bg-white md:hidden animate-in fade-in duration-300"
-        >
+        <div className="fixed inset-0 z-[60] w-full h-full bg-white md:hidden animate-in fade-in duration-300">
           {/* Close button */}
           <button
             type="button"
