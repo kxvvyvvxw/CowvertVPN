@@ -34,7 +34,6 @@ export default function SectionOnboarding() {
       />
       {/* Constrain content to a readable width and center it */}
       <MotionSection
-        animateOnLoad
         className="mx-auto flex w-full flex-col items-center"
       >
         {/* Small overline label */}

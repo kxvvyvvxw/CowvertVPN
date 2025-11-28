@@ -1,9 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import MotionButton from "@/components/ui/MotionButton";
-import MotionSection, { fadeInUp } from "@/app/components/ui/MotionSection";
+import MotionSection from "@/app/components/ui/MotionSection";
 import Modal from "@/app/components/Modal";
 import {
   LightningBoltIcon,
@@ -66,12 +65,9 @@ export default function HomeSection() {
         animateOnLoad
       >
         <div className="max-w-2xl mx-auto flex flex-col items-center justify-center">
-          <motion.div
+          <MotionSection
             className="w-48 h-48 md:w-60 md:h-60 mb-8 opacity-90 select-none"
-            variants={fadeInUp}
-            initial="hidden"
-            animate="show"
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            animateOnLoad
           >
             <video
               ref={videoRef}
@@ -89,14 +85,12 @@ export default function HomeSection() {
             >
               <source src="/videos/CowvertBlinkLogo.webm" type="video/webm" />
             </video>
-          </motion.div>
+          </MotionSection>
 
-          <motion.div
+          <MotionSection
             className="flex flex-col items-center justify-center"
-            variants={fadeInUp}
-            initial="hidden"
-            animate="show"
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
+            animateOnLoad
+            delay={0.1}
           >
             <h1 className="text-5xl md:text-6xl font-semibold leading-tight tracking-tight text-zinc-900">
               Cowvert VPN
@@ -142,7 +136,7 @@ export default function HomeSection() {
                 No logins required
               </span>
             </p>
-          </motion.div>
+          </MotionSection>
         </div>
       </MotionSection>
     </>

@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { fadeInUp } from "@/app/components/ui/MotionSection";
+import MotionSection from "@/app/components/ui/MotionSection";
 
 // Small circular icon used in Section 3 stats, now served locally from /public/images
 const FIGMA_SECTION3_ICON = "/images/Chalk.png";
@@ -82,14 +81,7 @@ export default function SectionInfo() {
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 py-16">
         {/* Heading + paragraph block */}
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        <MotionSection className="max-w-4xl mx-auto text-center">
           {/* Overline label */}
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
             Why Cowvert exists
@@ -106,18 +98,14 @@ export default function SectionInfo() {
             No account is required and no logs are ever stored. <br />
             Login is available for sync or lifetime access, but never mandatory.
           </p>
-        </motion.div>
+        </MotionSection>
 
         {/* Metric cards row – stacks on mobile, sits side-by-side on larger screens */}
         <div className="grid gap-4 md:grid-cols-2">
           {/* Metric card 1 */}
-          <motion.div
+          <MotionSection
             className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.04 }}
+            delay={0.04}
           >
             <div className="flex items-center justify-center gap-3">
               <p className="text-3xl font-medium tracking-tight text-zinc-900">
@@ -136,16 +124,12 @@ export default function SectionInfo() {
             <p className="mt-2 text-sm text-zinc-500">
               Faster than typical free VPN services
             </p>
-          </motion.div>
+          </MotionSection>
 
           {/* Metric card 2 */}
-          <motion.div
+          <MotionSection
             className="flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-8 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+            delay={0.12}
           >
             <div className="flex items-center justify-center gap-3">
               <p className="text-3xl font-medium tracking-tight text-zinc-900">
@@ -164,7 +148,7 @@ export default function SectionInfo() {
             <p className="mt-2 text-sm text-zinc-500">
               Global servers and always expanding
             </p>
-          </motion.div>
+          </MotionSection>
         </div>
       </div>
     </section>
